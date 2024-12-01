@@ -17,18 +17,18 @@
     <?php
     include 'config.php';
 
-    $estate_id = 9;
-    $estate_address = "new_test_address";
-    $estate_description = "new_test_description";
+    $estate_id = 6;
 
-    $query = "UPDATE real_estates SET address = :address, description = :description WHERE id = :id";
+    $query = "DELETE FROM real_estates WHERE id = :id";
     $statement = $pdo->prepare($query);
 
-    $statement->bindParam(':address', $estate_address);
-    $statement->bindParam(':description', $estate_description);
     $statement->bindParam(':id', $estate_id);
-
     $statement->execute();
+
+    $estate_id = 7;
+    $statement->bindParam(':id', $estate_id);
+    $statement->execute();
+
     print "OK.";
     ?>
 </body>
